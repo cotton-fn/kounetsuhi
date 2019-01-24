@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
+
+import reducer from './reducers';
+import NavBar from './NavBar';
+import HomePage from './HomePage';
+import EditPage from './EditPage';
+import AddPage from './AddPage';
+
+const store = createStore(reducer);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <NavBar />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/edit" component={EditPage} />
+            <Route path="/add" component={AddPage} />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
