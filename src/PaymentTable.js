@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 const HomePage = props => { console.log(props);return(
   <table>
+    <thead>
+      <tr>
+        <th>種別</th>
+        <th>年月</th>
+        <th>値段</th>
+      </tr>
+    </thead>
+    <tbody>
     {
       props.payments.map((payment, index) => (
-        <tr>
+        <tr key={index}>
           <td>
             {props.items.data[index].name}
           </td>
@@ -18,6 +26,7 @@ const HomePage = props => { console.log(props);return(
         </tr>
       ))
     }
+    </tbody>
   </table>
 )};
 

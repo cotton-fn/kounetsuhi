@@ -23,8 +23,10 @@ const items = (state = initialItemsState, action) => {
           }
         ]
       };
+
+    default:
+      return state;
   }
-  return state;
 };
 
 const initialPaymentState = [];
@@ -39,10 +41,18 @@ const payments = (state = initialPaymentState, action) => {
           year, month, values
         }
       ];
+
+    default:
+      return state;   
   }
+};
+
+const initialDateState = { current: new Date() };
+
+const date = (state = initialDateState, action) => {
   return state;
 };
 
 export default combineReducers({
-  items, payments
+  items, payments, date
 });

@@ -1,4 +1,4 @@
-import { dispatch } from 'redux';
+// import { dispatch } from 'redux';
 
 export const addItem = name => ({
   type: 'ADD_ITEM', name
